@@ -122,18 +122,107 @@ git clone https://github.com/nom_utilisateur/nom_du_depot.git
 10. Accédez au référentiel :
 - Après le clonage, vous verrez le référentiel listé dans la fenêtre principale de GitHub Desktop. Vous pouvez double-cliquer sur le référentiel pour l'ouvrir dans votre éditeur de code préféré et commencer à travailler sur le projet.
   
-## Creation de sa branche de travail
+## Do it yourself :
 
+Assurez-vous que vous êtes sur la branche principale : Utilisez la commande suivante pour vous assurer que vous êtes sur la branche principale de votre référentiel :
+
+```
+git branch
+```
+
+Vous devriez voir un astérisque (*) à côté de la branche principale, indiquant que vous êtes actuellement sur cette branche.
+
+### Creation de sa branche de travail
+
+Créez une nouvelle branche : Utilisez la commande suivante pour créer une nouvelle branche. Remplacez <nom_de_la_branche> par le nom que vous souhaitez donner à votre nouvelle branche. Par exemple, "ma-nouvelle-fonction" :
+```
+git branch <nom_de_la_branche>
+```
+
+Créer une autre nouvelle branche. Elle servira de branche principal fictive pour les manipulations à distance
+```
+git branch main_fictif_<ton_nom>
+```
+
+#### Distance vs Local
+Différences entre l'environnement local et distance (remote)
+Principales différences :
+
+**Emplacement** :
+   Le dépôt local se trouve sur votre ordinateur.
+   Le dépôt à distance se trouve sur un serveur distant.
+
+**Accessibilité** :
+   Vous pouvez travailler sur le dépôt local même hors ligne.
+   Le dépôt à distance permet la collaboration en rendant le code accessible à d'autres membres de l'équipe, généralement via Internet.
+
+**Synchronisation** :
+   Vous pouvez pousser (push) vos modifications depuis le dépôt local vers le dépôt à distance pour partager vos contributions.
+   Vous pouvez tirer (pull) les modifications depuis le dépôt à distance vers le dépôt local pour intégrer les contributions des autres.
+
+**Gestion des Contributions** :
+   Le dépôt à distance est généralement utilisé pour la coordination des contributions entre plusieurs développeurs.
+   Le dépôt local est votre espace de développement personnel.
+        
 ### Changer de branch
+Basculez vers la première branche créée branche : Utilisez la commande suivante pour basculer vers la nouvelle branche que vous venez de créer :
 
-### Local vs Distance
+```
+git checkout <nom_de_la_branche>
+```
 
-### observer les changements
+Maintenant, vous travaillez sur la nouvelle branche.
 
-## commit les changements
+### commit les changements
+Apportez des modifications : Modifiez un fichier dans votre projet. Vous pouvez ajouter, supprimer ou modifier du texte, du code, etc. dans le fichier.
 
-## Push les changements
+Ajoutez et committez vos modifications : Utilisez les commandes suivantes pour ajouter les modifications au suivi de Git et effectuer un commit :
+```
+git add nom_du_fichier_modifié
+git commit -m "Description de votre modification"
+```
 
-## Revert les changements
+Remplacez nom_du_fichier_modifié par le nom du fichier que vous avez modifié et ajoutez une description significative pour le commit.
 
-## Merge une branche
+### Push les changements
+Une fois les modifications faites, publiez les sur l'environnement a distance.
+Si c'est le premier push de la branche. Vous pousserez aussi la nouvelle branche sur l'environnement à distance.
+Cette branche sera maintenant disponible a partir de l'environnement à distance
+
+Pousser votre commit sur l'environnement à distance :
+```
+git push
+```
+
+**Mettre a jour votre environnement local lorsqu'il est différent de l'environnement à distance :**
+executer cette commande pour récupérer les changements sur l'environnement à distance :
+```
+git fetch
+```
+
+executer cette commande pour appliquer les changements sur l'environnement et les fusionner a votre environnement local :
+```
+git pull
+```
+### Changer de branches
+Revenez à la branche principale fictive : Si vous souhaitez maintenant fusionner votre nouvelle branche avec la branche principale fictive, utilisez la commande suivante pour revenir à la branche principale :
+```
+git checkout main_fictif_<ton_nom>
+```
+
+### Merge de branches
+Fusionnez la nouvelle branche avec la branche active : Utilisez la commande suivante pour fusionner la nouvelle branche avec la branche active :
+```
+git merge <nom_de_la_branche>
+```
+
+Remplacez <nom_de_la_branche> par le nom de la branche que vous avez créée.
+
+Supprimez la branche (si nécessaire) : Si vous n'avez plus besoin de la branche que vous avez créée, vous pouvez la supprimer à l'aide de la commande suivante :
+
+```
+git branch -d <nom_de_la_branche>
+```
+
+Assurez-vous que vous avez déjà fusionné toutes les modifications nécessaires de cette branche avant de la supprimer.
+
